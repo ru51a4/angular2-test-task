@@ -1,0 +1,80 @@
+.current-weather {
+  font-size: 25px;
+  margin: 10px
+}
+
+
+.map-container {
+
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  @media (max-width: 1200px) {
+    flex-direction: column-reverse;
+  }
+
+  .map-weather {
+    height: 10%;
+    display: flex;
+    align-items: center;
+  }
+
+  .map {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+  }
+
+  .reset-btn {
+    height: 10%;
+    display: flex;
+    align-items: center;
+
+  }
+}
+
+.weather-container {
+
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  @media (max-width: 1200px) {
+    height: unset;
+
+  }
+
+  .header-weather {
+    height: 10%;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 1200px) {
+      height: unset;
+      margin: 15px;
+    }
+  }
+
+  .list-weather {
+    height: 80%;
+    width: 100%;
+    @media (max-width: 1200px) {
+      height: unset;
+      width: unset;
+    }
+  }
+
+  .pagination-weather {
+    height: 10%;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 1200px) {
+      height: unset;
+      margin: 15px;
+    }
+  }
+}

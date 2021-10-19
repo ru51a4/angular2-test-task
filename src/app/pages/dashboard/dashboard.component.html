@@ -1,0 +1,57 @@
+<div class="row align-items-center mt-3">
+  <div class="map-container col-xl-8 col-xs-12">
+    <div class="map-weather">
+      <span class="current-weather">
+        Weather in {{currentCity}} {{tempConverter(currentCityTemp, 'K', currentUnit) | number}} {{currentUnit}}
+      </span>
+    </div>
+    <div class="map">
+      <app-map (coordChange)="coordUpd$.next($event)"></app-map>
+    </div>
+    <div class="reset-btn">
+      <button type="button" (click)="resetApikey()" class="m-2 btn btn-primary">
+        reset api key
+      </button>
+    </div>
+  </div>
+  <div class="weather-container col-xl-4 col-xs-12 ">
+    <div class="header-weather">
+      <div class="form-group m-0 ">
+        <label class="m-0">current unit:</label>
+        <select [(ngModel)]="currentUnit" class="form-control">
+          <option>C</option>
+          <option>K</option>
+          <option>F</option>
+        </select>
+      </div>
+    </div>
+    <div class="list-weather">
+      <app-list [unit]="currentUnit" [weatherDataList]="weatherDataList"></app-list>
+    </div>
+    <div class="pagination-weather">
+      <pagination style="overflow: auto" [directionLinks]="false" [totalItems]="totalItems"
+                  [(ngModel)]="currentPage"
+                  [itemsPerPage]="itemPerPage"
+                  (pageChanged)="pageChanged($event)"
+      ></pagination>
+    </div>
+  </div>
+</div>
+<ng-template #modalAppKey>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Enter api key(<a href="https://openweathermap.org">OpenWeatherMap</a>)
+    </h4>
+
+  </div>
+  <div class="modal-body">
+    <div class="input-group d-flex flex-column justify-content-center mb-3">
+      <input [(ngModel)]="key" type="text" class="form-control w-100 mb-3" aria-label="Default"
+             aria-describedby="inputGroup-sizing-default">
+      <button type="button" (click)="checkApiKey(key)" class="btn btn-primary">check && add</button>
+      <span class="mt-2">example: 75a7dbb2c4d7463714c9f47e66333f31</span>
+      <alert *ngIf="errorApiMsg" type="danger">
+        Something went wrong
+      </alert>
+    </div>
+  </div>
+</ng-template>
