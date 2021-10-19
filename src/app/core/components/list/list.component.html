@@ -1,6 +1,5 @@
 <div #container class="list-container">
-  <div [style.height.px]="container.parentElement.parentElement.clientHeight/weatherDataList.length"
-       class="weather-col-container weather-col" *ngFor="let data of weatherDataList">
+  <div class="weather-col-container weather-col" *ngFor="let data of weatherDataList">
     <div>
       <span>  {{data.dt * 1000 | date :  'dd/MM/yyyy HH:MM'}}</span>
     </div>
