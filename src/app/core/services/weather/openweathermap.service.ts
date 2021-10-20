@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
-import { ApiService } from '../api.service';
-import { ErrorsService } from '../errors.service';
-import { Observable, Subject, throwError } from 'rxjs';
-import { KeysService } from '../keys.service';
-import { currentWeatherInterface, listWeatherInterface } from '../../interfaces/openweathermap.interace';
+import {Injectable} from '@angular/core';
+import {catchError} from 'rxjs/operators';
+import {ApiService} from '../api.service';
+import {ErrorsService} from '../errors.service';
+import {Observable, Subject, throwError} from 'rxjs';
+import {KeysService} from '../keys.service';
+import {currentWeatherInterface, listWeatherInterface} from '../../interfaces/openweathermap.interace';
 
 @Injectable({
   providedIn: 'root'
@@ -31,12 +31,10 @@ export class OpenweathermapService {
 
   checkApiKey(key: string): Subject<any> {
     const check$ = new Subject();
-    this.api.get(`forecast?q=Chelyabinsk&appid=${key}`, this.openWeatherMapApiUrl).pipe(
-      catchError((err) => {
-        check$.next(false);
-        return throwError(err);
-      })).subscribe(() => {
+    this.api.get(`forecast?q=Chelyabinsk&appid=${key}`, this.openWeatherMapApiUrl).subscribe(() => {
       check$.next(true);
+    }, () => {
+      check$.next(false);
     });
     return check$;
   }

@@ -6,7 +6,6 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { KeysService } from '../../core/services/keys.service';
-import { GeocodeService } from '../../core/services/geo/geocode.service';
 import { currentWeatherInterface, listWeatherOneElementInterface } from '../../core/interfaces/openweathermap.interace';
 
 
